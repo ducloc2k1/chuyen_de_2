@@ -33,6 +33,7 @@ public class TicketInfo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel11 = new javax.swing.JPanel();
         jLabel91 = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
@@ -97,8 +98,10 @@ public class TicketInfo extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton21);
         jRadioButton21.setText("1 chiều");
 
+        buttonGroup1.add(jRadioButton22);
         jRadioButton22.setText("khứ hồi");
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -253,6 +256,7 @@ public class TicketInfo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> jComboBox21;
     private javax.swing.JComboBox<String> jComboBox22;
     private org.jdatepicker.JDatePicker jDatePicker21;
