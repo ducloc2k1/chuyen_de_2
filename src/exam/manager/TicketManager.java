@@ -8,6 +8,7 @@ package exam.manager;
 import exam.sql.SqlConnection;
 import exam.ticket.entites.Ticket;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ public class TicketManager {
                 String toS  = st.getStaionById(rs.getInt("toS")).getName();
                 ticket = new Ticket(rs.getInt("id"),rs.getString("passenger"),
                                     rs.getString("phone"),rs.getInt("fromS"),
-                                    rs.getInt("toS"),rs.getInt("type"),rs.getDate("startDate").toString(),
-                                    rs.getDate("endDate").toString(), rs.getInt("adult"),
+                                    rs.getInt("toS"),rs.getInt("type"),rs.getDate("startDate").toLocalDate(),
+                                    rs.getDate("endDate").toLocalDate(), rs.getInt("adult"),
                                     rs.getInt("child"),fromS,toS);
                 listTicket.add(ticket);
             }
@@ -54,13 +55,26 @@ public class TicketManager {
             String toS  = st.getStaionById(rs.getInt("toS")).getName();
             Ticket ticket = new Ticket(rs.getInt("id"),rs.getString("passenger"),
                                 rs.getString("phone"),rs.getInt("fromS"),
-                                rs.getInt("toS"),rs.getInt("type"),rs.getDate("startDate").toString(),
-                                rs.getDate("endDate").toString(), rs.getInt("adult"),
+                                rs.getInt("toS"),rs.getInt("type"),rs.getDate("startDate").toLocalDate(),
+                                rs.getDate("endDate").toLocalDate(), rs.getInt("adult"),
                                 rs.getInt("child"),fromS,toS);
             return ticket;
         } catch (SQLException ex) {
             Logger.getLogger(TicketManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public void removeTicketById(int id){
+        int rs = SqlConnection.exeUpdate("{call removeTicketById(?)}",id);
+    }
+    
+    public void addTicket(Ticket ticket){
+        int rs = SqlConnection.exeUpdate("{call addTicket(?,?,?,?,?,?,?,?,?)}",
+                                                ticket.getPassenger(),ticket.getPhone(),
+                                                ticket.getFromS(), ticket.getToS(),
+                                                ticket.getType(), Date.valueOf(ticket.getStartDate()),
+                                                Date.valueOf(ticket.getEndDate()), ticket.getAdult(),
+                                                ticket.getChild());
     }
 }

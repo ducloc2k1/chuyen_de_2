@@ -5,6 +5,9 @@
  */
 package exam.ticket.entites;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  *
  * @author DELL
@@ -17,8 +20,8 @@ public class Ticket {
     private int fromS;
     private int toS;
     private int type;
-    private String startDate;
-    private String endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int adult;
     private int child;
     private String fromSName;
@@ -27,8 +30,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(int id, String passenger, String phone, int fromS, int toS, int type,
-            String startDate, String endDate, int adult, int child, String fromSName, String toSName) {
+    public Ticket(int id, String passenger, String phone, int fromS, int toS, int type, LocalDate startDate, LocalDate endDate, int adult, int child, String fromSName, String toSName) {
         this.id = id;
         this.passenger = passenger;
         this.phone = phone;
@@ -42,8 +44,8 @@ public class Ticket {
         this.fromSName = fromSName;
         this.toSName = toSName;
     }
-
-    public Ticket(String passenger, String phone, int fromS, int toS, int type, String startDate, String endDate, int adult, int child) {
+    
+    public Ticket(String passenger, String phone, int fromS, int toS, int type, LocalDate startDate, LocalDate endDate, int adult, int child) {
         this.passenger = passenger;
         this.phone = phone;
         this.fromS = fromS;
@@ -103,19 +105,19 @@ public class Ticket {
         this.type = type;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -150,4 +152,7 @@ public class Ticket {
     public void setToSName(String toSName) {
         this.toSName = toSName;
     }
+
+    
+    
 }

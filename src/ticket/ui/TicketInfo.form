@@ -37,7 +37,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAdd" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSave" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="btnEdit" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -51,8 +51,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -79,55 +79,55 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel91" min="-2" pref="156" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextField41" max="32767" attributes="0"/>
+                          <Component id="txtPassenger" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel92" min="-2" pref="156" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jTextField42" max="32767" attributes="0"/>
+                          <Component id="txtPhone" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel93" min="-2" pref="156" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jComboBox22" max="32767" attributes="0"/>
+                                  <Component id="jcomboxFromS" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel94" min="-2" pref="156" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jComboBox21" min="-2" pref="391" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxToS" min="-2" pref="391" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel98" min="-2" pref="156" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextField43" max="32767" attributes="0"/>
+                                          <Component id="txtAdult" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel97" min="-2" pref="156" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton21" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnOne" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jRadioButton22" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTwo" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel99" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextField44" min="-2" pref="69" max="-2" attributes="0"/>
+                                  <Component id="txtChild" min="-2" pref="69" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel95" min="-2" pref="156" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jDatePicker21" max="32767" attributes="0"/>
+                                  <Component id="DateFrom" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel96" min="-2" pref="156" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jDatePicker22" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <Component id="DateTo" min="-2" pref="245" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="64" max="32767" attributes="0"/>
@@ -147,49 +147,49 @@
                               <Component id="jLabel91" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jTextField41" max="32767" attributes="0"/>
+                                  <Component id="txtPassenger" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel92" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jTextField42" alignment="3" max="32767" attributes="0"/>
+                              <Component id="txtPhone" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel93" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jComboBox22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcomboxFromS" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel94" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jComboBox21" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxToS" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel95" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jDatePicker21" min="-2" max="-2" attributes="0"/>
+                          <Component id="DateFrom" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel96" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jDatePicker22" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="DateTo" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel97" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jRadioButton21" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton22" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnOne" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnTwo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel98" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jTextField43" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAdult" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel99" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jTextField44" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtChild" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -245,64 +245,66 @@
             <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1edb;n "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField41">
+        <Component class="javax.swing.JTextField" name="txtPassenger">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField42">
+        <Component class="javax.swing.JTextField" name="txtPhone">
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox21">
+        <Component class="javax.swing.JComboBox" name="jComboBoxToS">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox22">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox22ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxToSActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Station&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="org.jdatepicker.JDatePicker" name="jDatePicker21">
+        <Component class="javax.swing.JComboBox" name="jcomboxFromS">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcomboxFromSActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Station&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="org.jdatepicker.JDatePicker" name="jDatePicker22">
+        <Component class="org.jdatepicker.JDatePicker" name="DateFrom">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateFromActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton21">
+        <Component class="org.jdatepicker.JDatePicker" name="DateTo">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="btnOne">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="1 chi&#x1ec1;u"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton22">
+        <Component class="javax.swing.JRadioButton" name="btnTwo">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="kh&#x1ee9; h&#x1ed3;i"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField43">
+        <Component class="javax.swing.JTextField" name="txtAdult">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel99">
           <Properties>
@@ -310,21 +312,21 @@
             <Property name="text" type="java.lang.String" value="Tr&#x1ebb; em"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField44">
+        <Component class="javax.swing.JTextField" name="txtChild">
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnAdd">
+    <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
+        <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
+        <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
       </Properties>
     </Component>
   </SubComponents>

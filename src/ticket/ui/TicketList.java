@@ -5,8 +5,13 @@
  */
 package ticket.ui;
 
+import exam.manager.TicketManager;
+import exam.ticket.entites.Ticket;
+import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.JMenuItem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,11 +19,29 @@ import javax.swing.JMenuItem;
  */
 public class TicketList extends javax.swing.JInternalFrame {
 
+    TicketManager ticketManager = new TicketManager();
+
+    public void loadTicketList() {
+        List<Ticket> data = ticketManager.getAllTicket();
+
+        DefaultTableModel defaultTableModel = (DefaultTableModel) tblListTicket.getModel();
+        if (data.size() > 0) {
+            defaultTableModel.setRowCount(0);
+            for (Ticket ticket : data) {
+                defaultTableModel.addRow(new Object[]{ticket.getId(), ticket.getPassenger(),
+                    ticket.getPhone(), ticket.getFromSName(), ticket.getToSName(),
+                    ticket.getType(), ticket.getStartDate(), ticket.getEndDate()});
+            }
+        }
+        tblListTicket.setModel(defaultTableModel);
+    }
+
     /**
      * Creates new form TicketList
      */
     public TicketList() {
         initComponents();
+        loadTicketList();
     }
 
     /**
@@ -31,17 +54,27 @@ public class TicketList extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         popupMenu = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MenuEdit = new javax.swing.JMenuItem();
+        MenuRemove = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblListTicket = new javax.swing.JTable();
 
-        jMenuItem1.setText("Sửa");
-        popupMenu.add(jMenuItem1);
+        MenuEdit.setText("Sửa");
+        MenuEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEditActionPerformed(evt);
+            }
+        });
+        popupMenu.add(MenuEdit);
 
-        jMenuItem2.setText("Xóa");
-        jMenuItem2.setToolTipText("");
-        popupMenu.add(jMenuItem2);
+        MenuRemove.setText("Xóa");
+        MenuRemove.setToolTipText("");
+        MenuRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRemoveActionPerformed(evt);
+            }
+        });
+        popupMenu.add(MenuRemove);
 
         setClosable(true);
         setIconifiable(true);
@@ -49,7 +82,7 @@ public class TicketList extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Danh sách đặt vé");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListTicket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
             },
@@ -57,12 +90,12 @@ public class TicketList extends javax.swing.JInternalFrame {
                 "Mã vé", "Tên hành khách", "Số điện thoại", "Ga đi", "Ga đến", "Loại vé", "Ngày đi", "Ngày đến"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblListTicket.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTable1MouseReleased(evt);
+                tblListTicketMouseReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblListTicket);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +103,7 @@ public class TicketList extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -83,22 +116,36 @@ public class TicketList extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+    private void tblListTicketMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListTicketMouseReleased
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            if (evt.isPopupTrigger() && jTable1.getSelectedRowCount() != 0 ) {
+            if (evt.isPopupTrigger() && tblListTicket.getSelectedRowCount() != 0) {
                 this.add(popupMenu);
                 popupMenu.show(evt.getComponent(), evt.getX(), evt.getY());
             }
         }
-    }//GEN-LAST:event_jTable1MouseReleased
+    }//GEN-LAST:event_tblListTicketMouseReleased
 
+    private void MenuRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRemoveActionPerformed
+        // TODO add your handling code here:
+        int indexTicket = (int) tblListTicket.getValueAt(tblListTicket.getSelectedRow(), 0);
+        ticketManager.removeTicketById(indexTicket);
+        loadTicketList();
+    }//GEN-LAST:event_MenuRemoveActionPerformed
+
+    private void MenuEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEditActionPerformed
+        // TODO add your handling code here:
+            int indexTicket = (int) tblListTicket.getValueAt(tblListTicket.getSelectedRow(), 0);
+            TicketInfo ticketInfo = new TicketInfo(indexTicket);
+            this.getParent().add(ticketInfo);
+            ticketInfo.setVisible(true);
+    }//GEN-LAST:event_MenuEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem MenuEdit;
+    private javax.swing.JMenuItem MenuRemove;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPopupMenu popupMenu;
+    private javax.swing.JTable tblListTicket;
     // End of variables declaration//GEN-END:variables
 }

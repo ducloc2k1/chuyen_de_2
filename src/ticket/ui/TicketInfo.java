@@ -5,23 +5,41 @@
  */
 package ticket.ui;
 
+import exam.manager.StationManager;
+import exam.manager.TicketManager;
+import exam.station.entites.Station;
+import exam.ticket.entites.Ticket;
 import java.awt.Component;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JFrame;
+import org.jdatepicker.DateModel;
+import org.jdatepicker.JDatePanel;
 
 /**
  *
  * @author DELL
  */
 public class TicketInfo extends javax.swing.JInternalFrame {
+    
+    int indexTicket;
+    
+    TicketManager ticketManager = new TicketManager();
+    
+    StationManager stationManager = new StationManager();
 
     /**
      * Creates new form TicketInfo
      */
-    public TicketInfo() {
+    public TicketInfo(int indexTicket) {
         initComponents();
+        this.indexTicket = indexTicket;
+        loadTicket();
     }
 
     /**
@@ -43,18 +61,18 @@ public class TicketInfo extends javax.swing.JInternalFrame {
         jLabel96 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
-        jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jComboBox21 = new javax.swing.JComboBox<>();
-        jComboBox22 = new javax.swing.JComboBox<>();
-        jDatePicker21 = new org.jdatepicker.JDatePicker();
-        jDatePicker22 = new org.jdatepicker.JDatePicker();
-        jRadioButton21 = new javax.swing.JRadioButton();
-        jRadioButton22 = new javax.swing.JRadioButton();
-        jTextField43 = new javax.swing.JTextField();
+        txtPassenger = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        jComboBoxToS = new javax.swing.JComboBox<>();
+        jcomboxFromS = new javax.swing.JComboBox<>();
+        DateFrom = new org.jdatepicker.JDatePicker();
+        DateTo = new org.jdatepicker.JDatePicker();
+        btnOne = new javax.swing.JRadioButton();
+        btnTwo = new javax.swing.JRadioButton();
+        txtAdult = new javax.swing.JTextField();
         jLabel99 = new javax.swing.JLabel();
-        jTextField44 = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
+        txtChild = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
 
         setClosable(true);
@@ -89,20 +107,29 @@ public class TicketInfo extends javax.swing.JInternalFrame {
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel98.setText("Người lớn ");
 
-        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox22.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxToS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox22ActionPerformed(evt);
+                jComboBoxToSActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton21);
-        jRadioButton21.setText("1 chiều");
+        jcomboxFromS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboxFromSActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton22);
-        jRadioButton22.setText("khứ hồi");
+        DateFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DateFromActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(btnOne);
+        btnOne.setText("1 chiều");
+
+        buttonGroup1.add(btnTwo);
+        btnTwo.setText("khứ hồi");
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel99.setText("Trẻ em");
@@ -117,45 +144,45 @@ public class TicketInfo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField41))
+                        .addComponent(txtPassenger))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField42))
+                        .addComponent(txtPhone))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox22, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jcomboxFromS, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxToS, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
                                         .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField43))
+                                        .addComponent(txtAdult))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
                                         .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton21)))
+                                        .addComponent(btnOne)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jRadioButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTwo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel99, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtChild, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jDatePicker21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(DateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jDatePicker22, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(DateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 64, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -169,50 +196,50 @@ public class TicketInfo extends javax.swing.JInternalFrame {
                             .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jTextField41)))
+                                .addComponent(txtPassenger)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField42))
+                            .addComponent(txtPhone))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcomboxFromS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxToS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jDatePicker21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDatePicker22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton21)
-                    .addComponent(jRadioButton22))
+                    .addComponent(btnOne)
+                    .addComponent(btnTwo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAdult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtChild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnAdd.setText("Thêm");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setText("Lưu");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        btnEdit.setText("Sửa");
+        btnEdit.setText("Hủy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,7 +252,7 @@ public class TicketInfo extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -234,8 +261,8 @@ public class TicketInfo extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(btnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSave)
                 .addGap(18, 18, 18)
                 .addComponent(btnEdit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -244,23 +271,88 @@ public class TicketInfo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+    public void loadTicket() {
+        if (indexTicket > 0) {
+            Ticket ticket = ticketManager.getTicketById(indexTicket);
+            txtPassenger.setText(ticket.getPassenger());
+            txtPhone.setText(ticket.getPhone());
+            jcomboxFromS.getModel().setSelectedItem(stationManager.getStaionById(ticket.getFromS()));
+            jComboBoxToS.getModel().setSelectedItem(stationManager.getStaionById(ticket.getToS()));
+            //From Date
+            DateModel dateModelF = (DateModel) DateFrom.getModel();
+            dateModelF.setSelected(true);
+            dateModelF.setDate(ticket.getStartDate().getYear(),
+                    ticket.getStartDate().getMonthValue(), ticket.getStartDate().getDayOfMonth());
 
-    private void jComboBox22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox22ActionPerformed
+            // To Date
+            DateModel dateModelT = (DateModel) DateTo.getModel();
+            dateModelT.setSelected(true);
+            dateModelT.setDate(ticket.getEndDate().getYear(), ticket.getEndDate().getMonthValue(), ticket.getEndDate().getDayOfMonth());
+            
+            if (ticket.getType() == 1) {
+                buttonGroup1.setSelected(btnOne.getModel(), true);
+            } else {
+                buttonGroup1.setSelected(btnTwo.getModel(), true);
+            }
+            txtAdult.setText(String.valueOf(ticket.getAdult()));
+            txtChild.setText(String.valueOf(ticket.getChild()));
+        }
+        for (Station station : stationManager.getAllStation()) {
+            jComboBoxToS.addItem(station);
+            jcomboxFromS.addItem(station);
+        }
+        
+    }
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox22ActionPerformed
+        int type;
+        if (buttonGroup1.isSelected(btnOne.getModel())) {
+            type = 1;
+        } else {
+            type = 2;
+        }        
+        //From Date
+        DateModel dateModelF = (DateModel) DateFrom.getModel();
+
+        // To Date
+        DateModel dateModelT = (DateModel) DateTo.getModel();
+        
+        Ticket ticket = new Ticket(txtPassenger.getText(), txtPhone.getText(),
+                Integer.valueOf(((Station) jcomboxFromS.getSelectedItem()).getId()),
+                Integer.valueOf(((Station) jComboBoxToS.getSelectedItem()).getId()),
+                type, LocalDate.of(dateModelF.getYear(), dateModelF.getMonth(), dateModelF.getDay()),
+                LocalDate.of(dateModelT.getYear(), dateModelT.getMonth(), dateModelT.getDay()),
+                Integer.valueOf(txtAdult.getText()), Integer.valueOf(txtChild.getText()));
+        ticketManager.addTicket(ticket);
+        for (Component component : this.getParent().getComponents()) {
+            if (component instanceof TicketList) {
+                ((TicketList) component).loadTicketList();
+            }
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void jcomboxFromSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboxFromSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcomboxFromSActionPerformed
+
+    private void DateFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateFromActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DateFromActionPerformed
+
+    private void jComboBoxToSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxToSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxToSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
+    private org.jdatepicker.JDatePicker DateFrom;
+    private org.jdatepicker.JDatePicker DateTo;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JRadioButton btnOne;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JRadioButton btnTwo;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox21;
-    private javax.swing.JComboBox<String> jComboBox22;
-    private org.jdatepicker.JDatePicker jDatePicker21;
-    private org.jdatepicker.JDatePicker jDatePicker22;
+    private javax.swing.JComboBox<Station> jComboBoxToS;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
@@ -271,11 +363,10 @@ public class TicketInfo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JRadioButton jRadioButton21;
-    private javax.swing.JRadioButton jRadioButton22;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
+    private javax.swing.JComboBox<Station> jcomboxFromS;
+    private javax.swing.JTextField txtAdult;
+    private javax.swing.JTextField txtChild;
+    private javax.swing.JTextField txtPassenger;
+    private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }
