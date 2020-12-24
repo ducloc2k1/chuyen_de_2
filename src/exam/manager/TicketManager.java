@@ -77,4 +77,13 @@ public class TicketManager {
                                                 Date.valueOf(ticket.getEndDate()), ticket.getAdult(),
                                                 ticket.getChild());
     }
+    
+    public void updateTicket(int id, Ticket ticket){
+        int rs = SqlConnection.exeUpdate("{call updateTicket(?,?,?,?,?,?,?,?,?,?)}",
+                                                id,ticket.getPassenger(),ticket.getPhone(),
+                                                ticket.getFromS(), ticket.getToS(),
+                                                ticket.getType(), Date.valueOf(ticket.getStartDate()),
+                                                Date.valueOf(ticket.getEndDate()), ticket.getAdult(),
+                                                ticket.getChild());
+    }
 }

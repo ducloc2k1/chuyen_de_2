@@ -29,7 +29,11 @@ import org.jdatepicker.JDatePanel;
  */
 public class TicketInfo extends javax.swing.JInternalFrame {
     
+    //index of ticket
     int indexTicket;
+    
+    //edit
+    boolean edit = false;
     
     TicketManager ticketManager = new TicketManager();
     
@@ -312,11 +316,15 @@ public class TicketInfo extends javax.swing.JInternalFrame {
             }
             txtAdult.setText(" ");
             txtChild.setText(" ");
+            buttonGroup1.clearSelection();
         }
         
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if (indexTicket > 0) {
+            edit = true;
+        }
         int type;
         if (buttonGroup1.isSelected(btnOne.getModel())) {
             type = 1;
@@ -335,12 +343,12 @@ public class TicketInfo extends javax.swing.JInternalFrame {
                 type, LocalDate.of(dateModelF.getYear(), dateModelF.getMonth(), dateModelF.getDay()),
                 LocalDate.of(dateModelT.getYear(), dateModelT.getMonth(), dateModelT.getDay()),
                 Integer.valueOf(txtAdult.getText()), Integer.valueOf(txtChild.getText()));
-        ticketManager.addTicket(ticket);
+        if (!edit) ticketManager.addTicket(ticket);
+        else ticketManager.updateTicket(indexTicket, ticket);
+        //reload table
         for (Component component : this.getParent().getComponents()) {
             if (component instanceof TicketList) {
                 ((TicketList) component).loadTicketList();
-            }else{
-                System.out.println("chưa có");
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed

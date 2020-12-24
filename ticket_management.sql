@@ -111,3 +111,31 @@ END
 
 GO
 
+CREATE PROC updateTicket
+	@id INT,
+	@passenger NVARCHAR(50),
+	@phone VARCHAR(50),
+	@fromS INT,
+	@toS INT,
+	@type INT,
+	@startDate DATE,
+	@endDate DATE,
+	@adult int,
+	@child int
+AS
+BEGIN 
+	UPDATE ticket
+	SET passenger = @passenger,
+		phone = @phone,
+		fromS = @fromS,
+		toS = @toS,
+		type = @type,
+		startDate = @startDate,
+		endDate = @endDate,
+		adult = @adult,
+		child = @child
+	WHERE id = @id
+END
+
+GO
+
