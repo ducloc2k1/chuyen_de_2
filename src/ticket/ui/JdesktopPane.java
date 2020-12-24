@@ -25,6 +25,7 @@ public class JdesktopPane extends javax.swing.JFrame {
     }
     
     TicketList  ticketList = new TicketList();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,6 +129,7 @@ public class JdesktopPane extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         if (!ticketList.isShowing()) {
+            this.ticketList = new TicketList();
             jDesktopPane1.add(ticketList);
             ticketList.setVisible(true);
         }

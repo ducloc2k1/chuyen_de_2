@@ -93,7 +93,7 @@ END
 
 GO
 
-ALTER PROC addTicket
+CREATE PROC addTicket
 	@passenger NVARCHAR(50),
 	@phone VARCHAR(50),
 	@fromS INT,
@@ -111,4 +111,3 @@ END
 
 GO
 
-addTicket N'Phạm Hải Nam',	'012801014',	1,	3,	1,	'2020-09-09',	'2020-09-11',	4,	1
